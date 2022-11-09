@@ -9,9 +9,8 @@ public class HelloWorldTest {
   public void testRestAssured() {
     Response response = RestAssured
             .given()
-            .queryParam("param1", "value1")
-            .queryParam("param2", "value2")
-            .get("https://playground.learnqa.ru/api/check_type")
+            .body("param1=value1&param2=value2")
+            .post("https://playground.learnqa.ru/api/check_type")
             .andReturn();
 
     response.print();
