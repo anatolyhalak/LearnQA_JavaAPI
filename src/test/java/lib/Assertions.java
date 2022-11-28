@@ -26,4 +26,9 @@ public class Assertions {
             "Response status code is not as expected"
     );
   }
+
+  //метод проверяет что приходит поле с определенным именем этого поля
+  public static void assertJsonHasKey(Response Response, String expectedFieldName) {
+    Response.then().assertThat().body("$", hasKey(expectedFieldName));
+  }
 }
