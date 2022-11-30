@@ -46,7 +46,7 @@ public class UserEditTest extends BaseTestCase {
             .header("x-csrf-token", this.getHeader(responseGetAuth, "x-csrf-token"))
             .cookie("auth_sid", this.getCookie(responseGetAuth, "auth_sid"))
             .body(editData)
-            .put("https://playground.learnqa.ru/api/user" + userId)
+            .put("https://playground.learnqa.ru/api/user/" + userId)
             .andReturn();
 
     //GET
@@ -54,9 +54,10 @@ public class UserEditTest extends BaseTestCase {
             .given()
             .header("x-csrf-token", this.getHeader(responseGetAuth, "x-csrf-token"))
             .cookie("auth_sid", this.getCookie(responseGetAuth, "auth_sid"))
-            .get("https://playground.learnqa.ru/api/user" + userId)
+            .get("https://playground.learnqa.ru/api/user/" + userId)
             .andReturn();
 
+    //System.out.println(responseUserData.asString());
     Assertions.asserJsonByName(responseUserData, "firstName", newName);
   }
 }
